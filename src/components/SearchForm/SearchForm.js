@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SearchForm.css' 
+import { connect } from 'react-redux';
 
 class SearchForm extends Component {
 
@@ -15,10 +16,13 @@ class SearchForm extends Component {
       this.setState({
         url: event.target.value
       });
+    };
+
+    handleSubmit(event){
       this.props.dispatch({
         type: 'FETCH_GIPHY', payload: this.state
       });
-    };
+    }
 
     render() {
       return (
@@ -28,7 +32,8 @@ class SearchForm extends Component {
             <button id="submitBtn">Submit Search</button>
             </form>
             <div className="searchResults">
-            {/* {this.props.reduxState.giphyReducer.giphyArray.map} */}
+            {/* <img src={this.props.reduxState.giphyReducer.giphyArray.url}></img> */}
+            {JSON.stringify(this.props.reduxState.giphyReducer)}
             </div>
             <br></br>
             <br></br>
@@ -38,5 +43,11 @@ class SearchForm extends Component {
     };
   };
 
-  export default SearchForm;
+  const mapStateToProps = (reduxState) => ({
+    reduxState
+  })
+  
+  
+  export default connect(mapStateToProps)(SearchForm);
+  
   
