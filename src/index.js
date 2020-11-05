@@ -25,6 +25,13 @@ function* giphySaga () {
 }
 
 //Saga request handlers for fetching gifs from the giphy API
+// --------------------------------------------------------------
+
+function* fetchGiphy () {
+
+}
+
+
 
 // Saga request handlers for favorite gifs routes
 // ------------------------------------------------------------
@@ -46,14 +53,12 @@ function* updateFavorite () {
 
 // Setup the Redux store and link Sagas to it
 const sagaMiddleware = createSagaMiddleware();
-sagaMiddleware.run(giphySaga);
 const storeInstance = createStore(
     combineReducers({
         giphyReducer
     }),
     applyMiddleware(sagaMiddleware, logger)
 );
-
-
+sagaMiddleware.run(giphySaga);
 
 ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('react-root'));
