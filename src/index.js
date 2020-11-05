@@ -37,6 +37,7 @@ function* giphySaga () {
 // -------------------------------------------------------------
 // Saga request to get gifs from the Giphy API, searching by tag
 function* fetchGiphy (action) {
+    console.log(action.payload.url);
     const giphyArray = yield axios.get(`/api/giphy/${action.payload.url}`);
     yield put({type: 'SET_GIFS', payload: giphyArray.data});
 }
