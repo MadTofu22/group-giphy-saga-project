@@ -12,13 +12,15 @@ class SearchForm extends Component {
 
     };
 
-    handleChange(event){
+    handleChange = (event) => {
       this.setState({
         url: event.target.value
       });
     };
 
-    handleSubmit(event){
+    handleSubmit = (event) => {
+      event.preventDefault();
+      console.log('submit clicked');
       this.props.dispatch({
         type: 'FETCH_GIPHY', payload: this.state
       });
@@ -27,13 +29,13 @@ class SearchForm extends Component {
     render() {
       return (
         <>  
-            <form>
-            <input onSubmit={this.handleChange} type="text" placeholder="search for a Gif"></input>
+            <form onSubmit={this.handleSubmit}>
+            <input onChange={this.handleChange} type="text" placeholder="search for a Gif"></input>
             <button id="submitBtn">Submit Search</button>
             </form>
             <div className="searchResults">
             {/* <img src={this.props.reduxState.giphyReducer.giphyArray.url}></img> */}
-            {JSON.stringify(this.props.reduxState.giphyReducer)}
+            {JSON.stringify(this.props.reduxState.giphyReducer.giphyArray)}
             </div>
             <br></br>
             <br></br>
