@@ -23,7 +23,7 @@ const giphyReducer = (state={}, action) => {
         default:
             return state;
         case 'SET_GIFS':
-            return {...state, giphyArray: action.payload};
+            return {...state, giphyArray: action.payload.data};
     }
 }
 
