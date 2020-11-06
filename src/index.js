@@ -18,12 +18,15 @@ import { takeEvery, put } from 'redux-saga/effects';
 //     giphyArray, // Array of gifs from the Giphy API request
 //     favoritesArray // Array of gifs from favorites table in the DB
 // }
-const giphyReducer = (state={giphyArray: []}, action) => {
+const giphyReducer = (state={giphyArray: [], favoritesArray}, action) => {
     switch (action.type) {
         default:
             return state;
         case 'SET_GIFS':
             return {...state, giphyArray: action.payload.data};
+        case 'SET_FAVORITES':
+            return {...state, favoritesArray: action.payload};
+
     }
 }
 
@@ -32,6 +35,7 @@ function* giphySaga () {
     // yield takeEvery(_REQUEST-NAME_, _RQUEST-HANDLER_);
     yield takeEvery('FETCH_GIPHY', fetchGiphy);
     yield takeEvery('ADD_FAVORITE', addFavorite);
+    yield takeEvery('FETCH_FAVORTIES', fetchFavorites);
 }
 
 //Saga request handlers for fetching gifs from the giphy API
@@ -48,7 +52,8 @@ function* fetchGiphy (action) {
 // Saga to handle GET request to fetch favorites from the DB
 // Will need to add ability to search by category
 function* fetchFavorites () {
-
+    const favoritesArray = yield axios.get(`/api/favorite/`);
+    yield put({type: 'SET_FAVORITES', payload: favoritesArray});
 }
 
 // Saga to handle POST reuqest for adding a new favorite
