@@ -31,6 +31,7 @@ const giphyReducer = (state={giphyArray: []}, action) => {
 function* giphySaga () {
     // yield takeEvery(_REQUEST-NAME_, _RQUEST-HANDLER_);
     yield takeEvery('FETCH_GIPHY', fetchGiphy);
+    yield takeEvery('ADD_FAVORITE', addFavorite);
 }
 
 //Saga request handlers for fetching gifs from the giphy API
