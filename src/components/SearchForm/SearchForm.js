@@ -34,8 +34,11 @@ class SearchForm extends Component {
             <button id="submitBtn">Submit Search</button>
             </form>
             <div className="searchResults">
-            {/* <img src={this.props.reduxState.giphyReducer.giphyArray.url}></img> */}
-            {JSON.stringify(this.props.reduxState.giphyReducer.giphyArray)}
+             {this.props.reduxState.giphyReducer.giphyArray.map((gif) => {
+                return <img src={gif.images.original.url}></img> 
+             })}
+             {/* {this.props.reduxState.giphyReducer.giphyArray.images.url} */}
+             {/* {JSON.stringify(this.props.reduxState.giphyReducer.giphyArray)}  */}
             </div>
             <br></br>
             <br></br>
