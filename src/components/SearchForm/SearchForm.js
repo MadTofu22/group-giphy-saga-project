@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SearchForm.css' 
 import { connect } from 'react-redux';
-
+import FavoriteItem from '../FavoriteItem/FavoriteItem';
 class SearchForm extends Component {
 
     state = {
@@ -47,12 +47,13 @@ class SearchForm extends Component {
             
              {this.props.reduxState.giphyReducer.giphyArray.map((gif) => {
                 return <div className="searchResults"> <img src={gif.images.original.url}></img> 
-                <button onClick={(favorite) => this.addFavorite(gif.images.original.url)}>Favorite</button> </div>
+                <button onClick={() => this.addFavorite(gif.images.original.url)}>Favorite</button> </div>
              })}
             
             <br></br>
             <br></br>
             <button onClick={this.toFavesPage} id="routeBtn">(ROUTE TO FAVORITES)</button>
+            <FavoriteItem/>
         </>
       );
     };
