@@ -10,8 +10,8 @@ class FavoritesPage extends Component {
             <option value="funny">Funny</option>
             <option value="cohort">Cohort</option>
             <option value="cartoon">Cartoon</option>
-            <option value="nsfw">Ns</option>
-            <option value="funny">Funny</option>
+            <option value="nsfw">Nsfw</option>
+            <option value="meme">Meme</option>
          
         </div>
       );

@@ -11,7 +11,7 @@ router.get('/:search', (req, res) => {
     const numOfGifs = 6;
     const queryText = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${req.params.search}&limit=${numOfGifs}&offset=0&lang=en`;
     axios.get(queryText).then(result => {
-        res.send(result.data);
+        res.send(result.data.data);
     }).catch(error => {
         console.log(error);
         res.sendStatus(500);
