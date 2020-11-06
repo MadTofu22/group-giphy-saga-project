@@ -36,6 +36,7 @@ function* giphySaga () {
     yield takeEvery('FETCH_GIPHY', fetchGiphy);
     yield takeEvery('ADD_FAVORITE', addFavorite);
     yield takeEvery('FETCH_FAVORTIES', fetchFavorites);
+    yield takeEvery('UPDATE_FAVORITES', updateFavorite);
 }
 
 //Saga request handlers for fetching gifs from the giphy API
@@ -59,11 +60,13 @@ function* fetchFavorites () {
 // Saga to handle POST reuqest for adding a new favorite
 function* addFavorite (action) {
     yield axios.post(`/api/giphy`, action.payload);
+    yield put({type: 'FETCH_FAVORITES'});
 }
 
 // Saga to handle PUT request to update a favorite gifs category
-function* updateFavorite () {
-
+function* updateFavorite (action) {
+    yield axios.post(`/api/giphy/${action.payload.id}`, action.payload.category);
+    yield put({type: 'FETCH_FAVORITES'});
 }
 
 // Setup the Redux store and link Sagas to it
