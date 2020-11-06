@@ -12,6 +12,10 @@ class SearchForm extends Component {
 
     };
 
+    toFavesPage = () => {
+      this.props.history.push('/favorites');
+  }
+
     handleChange = (event) => {
       this.setState({
         url: event.target.value
@@ -33,16 +37,14 @@ class SearchForm extends Component {
             <input onChange={this.handleChange} type="text" placeholder="search for a Gif"></input>
             <button id="submitBtn">Submit Search</button>
             </form>
-            <div className="searchResults">
+            
              {this.props.reduxState.giphyReducer.giphyArray.map((gif) => {
-                return <img src={gif.images.original.url}></img> 
+                return <div className="searchResults"> <img src={gif.images.original.url}></img> <button>Favorite</button> </div>
              })}
-             {/* {this.props.reduxState.giphyReducer.giphyArray.images.url} */}
-             {/* {JSON.stringify(this.props.reduxState.giphyReducer.giphyArray)}  */}
-            </div>
+            
             <br></br>
             <br></br>
-            <button id="routeBtn">(ROUTE TO FAVORITES)</button>
+            <button onClick={this.toFavesPage} id="routeBtn">(ROUTE TO FAVORITES)</button>
         </>
       );
     };

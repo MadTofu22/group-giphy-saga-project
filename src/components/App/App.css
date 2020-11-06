@@ -1,0 +1,10 @@
+.App {
+    background-color: aquamarine;
+}
+
+.searchResults {
+    background-color: aquamarine;
+    border: 5px solid black;   
+    flex-direction: row;
+    display: inline-block;
+}
