@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class FavoritesPage extends Component {
+class FavoritesItem extends Component {
 
 state = {
   category: ''
@@ -17,15 +17,15 @@ handleChange = (event) => {
   })
 }
 
-updateCategory = (category, id) => {
-  this.props.dispatch({})
+updateCategory = () => {
+  this.props.dispatch({type: 'UPDATE_FAVORITE', payload: {category: this.state.category, id: this.props.gif.id}});
 }
 
     render() {
       return (
         <>
           <div> 
-          <select onChange={this.handleChange} name="Categories" id="favorites">
+            <select onChange={this.handleChange} name="Categories" id="favorites">
             <option value="funny">Funny</option>
             <option value="cohort">Cohort</option>
             <option value="cartoon">Cartoon</option>
@@ -36,7 +36,7 @@ updateCategory = (category, id) => {
           </div>
           <button onClick={this.toSearchPage} id="routeBtn2">(ROUTE TO SEARCH)</button>
         </>
-        //   {this.props.reduxState.giphyReducer.giphyArray.map((gif) => {
+        //   {this.props.reduxState.giphyReducer.favoritesArray.map((gif) => {
         //     return <div className="searchResults"> <img src={gif.images.original.url}></img> 
         //     <button onClick={() => this.addFavorite(gif.images.original.url)}>Favorite</button> </div>
         //  })}
@@ -49,4 +49,4 @@ updateCategory = (category, id) => {
     reduxState
   })
   
-  export default connect(mapStateToProps)(FavoritesPage);
+  export default connect(mapStateToProps)(FavoritesItem);

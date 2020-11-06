@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SearchForm.css' 
 import { connect } from 'react-redux';
-import FavoriteItem from '../FavoriteItem/FavoriteItem';
+import FavoritesItem from '../FavoritesItem/FavoritesItem';
 class SearchForm extends Component {
 
     state = {
@@ -53,7 +53,6 @@ class SearchForm extends Component {
             <br></br>
             <br></br>
             <button onClick={this.toFavesPage} id="routeBtn">(ROUTE TO FAVORITES)</button>
-            <FavoriteItem/>
         </>
       );
     };

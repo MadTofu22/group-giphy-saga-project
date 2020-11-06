@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import SearchList from '../SearchList/SearchList';
-import SearchItem from '../FavoriteItem/FavoriteItem';
 import { connect } from 'react-redux';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import FavoritesPage from '../FavoritesPage/FavoritesPage';
-
+import FavoritesItem from '../FavoritesItem/FavoritesItem';
+import FavoriteList from '../FavoriteList/FavoriteList';
 import './App.css';
+
 class App extends Component {
 
   render() {
@@ -16,8 +16,8 @@ class App extends Component {
         <div>
         <h3>Enter a Gif Keyword to Search!</h3>
         </div>
-        <Route path="/" component={SearchForm}/>
-        <Route path="/favorites" component={FavoritesPage}/>
+        <Route exact path="/" component={SearchForm}/>
+        <Route path="/favorites" component={FavoriteList}/>
         </Router>
       </>
     );
