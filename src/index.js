@@ -59,13 +59,13 @@ function* fetchFavorites () {
 
 // Saga to handle POST reuqest for adding a new favorite
 function* addFavorite (action) {
-    yield axios.post(`/api/giphy`, action.payload);
+    yield axios.post(`/api/favorite`, action.payload);
     yield put({type: 'FETCH_FAVORITES'});
 }
 
 // Saga to handle PUT request to update a favorite gifs category
 function* updateFavorite (action) {
-    yield axios.post(`/api/giphy/${action.payload.id}`, action.payload.category);
+    yield axios.post(`/api/favorite/${action.payload.id}`, action.payload.category);
     yield put({type: 'FETCH_FAVORITES'});
 }
 
