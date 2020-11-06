@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
   const queryParams = [req.body.url];
 
   pool.query(queryText, queryParams).then(result => {
-    consol.log(result);
+    console.log(result);
     res.sendStatus(200);  
   }).catch(error => {
     console.log(error);
