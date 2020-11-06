@@ -30,6 +30,13 @@ class SearchForm extends Component {
       });
     }
 
+    addFavorite = (favorite) => {
+      this.props.dispatch({
+        type: 'ADD_FAVORITE', payload:{url: favorite} 
+      })
+      console.log('are we adding favorites?', favorite);
+      }
+
     render() {
       return (
         <>  
@@ -39,7 +46,8 @@ class SearchForm extends Component {
             </form>
             
              {this.props.reduxState.giphyReducer.giphyArray.map((gif) => {
-                return <div className="searchResults"> <img src={gif.images.original.url}></img> <button>Favorite</button> </div>
+                return <div className="searchResults"> <img src={gif.images.original.url}></img> 
+                <button onClick={(favorite) => this.addFavorite(gif.images.original.url)}>Favorite</button> </div>
              })}
             
             <br></br>
