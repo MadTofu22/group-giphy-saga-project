@@ -25,7 +25,7 @@ updateCategory = (category, id) => {
       return (
         <>
           <div> 
-          <select name="Categories" id="favorites">
+          <select onChange={this.handleChange} name="Categories" id="favorites">
             <option value="funny">Funny</option>
             <option value="cohort">Cohort</option>
             <option value="cartoon">Cartoon</option>
