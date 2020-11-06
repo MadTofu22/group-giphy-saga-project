@@ -18,7 +18,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 //     giphyArray, // Array of gifs from the Giphy API request
 //     favoritesArray // Array of gifs from favorites table in the DB
 // }
-const giphyReducer = (state={giphyArray: [], favoritesArray}, action) => {
+const giphyReducer = (state={giphyArray: [], favoritesArray: []}, action) => {
     switch (action.type) {
         default:
             return state;
