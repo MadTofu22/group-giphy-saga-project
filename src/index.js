@@ -18,7 +18,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 //     giphyArray, // Array of gifs from the Giphy API request
 //     favoritesArray // Array of gifs from favorites table in the DB
 // }
-const giphyReducer = (state={}, action) => {
+const giphyReducer = (state={giphyArray: []}, action) => {
     switch (action.type) {
         default:
             return state;
@@ -39,7 +39,7 @@ function* giphySaga () {
 function* fetchGiphy (action) {
     console.log(action.payload.url);
     const giphyArray = yield axios.get(`/api/giphy/${action.payload.url}`);
-    yield put({type: 'SET_GIFS', payload: giphyArray.data});
+    yield put({type: 'SET_GIFS', payload: giphyArray});
 }
 
 // Saga request handlers for favorite gifs routes
@@ -51,8 +51,8 @@ function* fetchFavorites () {
 }
 
 // Saga to handle POST reuqest for adding a new favorite
-function* addFavorite () {
-
+function* addFavorite (action) {
+    yield axios.post(`/api/giphy`, action.payload);
 }
 
 // Saga to handle PUT request to update a favorite gifs category
